@@ -43,6 +43,12 @@
                 :rules="sameField"
                 validate-on-blur
               ></v-text-field>
+              <v-switch
+                label="Registrar empresa"
+                v-model="switchInput"
+                color="blue-grey darken-3"
+                hide-details
+              ></v-switch>
             </v-form>
           </v-card-text>
           <v-card-actions>
@@ -66,6 +72,7 @@ export default {
   },
   data() {
     return {
+      switchInput: false,
       formData: { nombre_usuario: "", clave: "", correo: "" },
       valid: true,
       regexEmail: /\S+@\S+\.\S+/,
