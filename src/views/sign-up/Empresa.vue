@@ -1,0 +1,11 @@
+<template>
+  <div class="Not FOund">
+    <h1>Not Found</h1>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "SignUpEmpresa",
+};
+</script>
