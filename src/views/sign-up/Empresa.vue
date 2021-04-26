@@ -51,7 +51,7 @@
                 name="informacion"
                 label="Informacion adicional"
                 type="text"
-                :counter="250"
+                :counter="300"
               ></v-textarea>
             </v-form>
           </v-card-text>
