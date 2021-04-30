@@ -9,21 +9,22 @@
           <v-card-text>
             <v-form ref="form" v-model="valid" lazy-validation>
               <v-text-field
-                v-model.trim="formData.nombre_usuario"
+                v-model.trim="formData.usuario"
                 prepend-icon="mdi-account"
-                name="login"
+                name="usuario"
                 label="Usuario"
                 type="text"
+                @keypress.enter="ingresar"
                 :rules="requiredField"
               ></v-text-field>
               <v-text-field
                 v-model.trim="formData.clave"
-                id="password"
                 prepend-icon="mdi-lock"
                 name="password"
                 label="Password"
                 type="password"
                 :rules="requiredField"
+                @keypress.enter="ingresar"
               ></v-text-field>
             </v-form>
           </v-card-text>
@@ -45,7 +46,7 @@ export default {
   },
   data() {
     return {
-      formData: { nombre_usuario: "", clave: "" },
+      formData: { usuario: "", clave: "" },
       valid: true,
       requiredField: [(v) => !!v || "Campo requerido"],
     };
@@ -60,18 +61,15 @@ export default {
         });
         return;
       }
-      console.log("Hacer peticion");
-      console.log(this.$refs.form.validate() ? "Valido" : "No Valido");
-      console.log(JSON.stringify(this.formData));
-      this.$router.push("About");
-      this.$store.commit("START_REQUEST");
-      this.$store.commit("SHOW_NOTIFICATION", {
-        text: "Good JOB.",
+      // eslint-disable-next-line no-undef
+      axios.post("/login", null, { params: this.formData }).then((result) => {
+        localStorage.setItem("login", JSON.stringify(result.data));
+        this.$store.commit("SHOW_NOTIFICATION", {
+          text: result.data.message || "Operación realizada.",
+        });
+        this.$store.commit("LOG_IN");
+        this.$router.push("/");
       });
-      this.$store.commit("LOG_IN");
-      setTimeout(() => {
-        this.$store.commit("END_REQUEST");
-      }, 2000);
     },
   },
 };

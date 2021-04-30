@@ -1,12 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+
+import store from "@/store";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import NotFound from "../views/error/NotFound.vue";
 import LoginForm from "../views/login/Form.vue";
 import SignUpForm from "../views/sign-up/Form.vue";
-
-// import NotFound from "../views/NotFound.vue";
 
 Vue.use(VueRouter);
 
@@ -23,13 +23,21 @@ const routes = [
   },
   {
     path: "/ingresar",
-    name: "Ingresar",
+    name: "ingresar",
     component: LoginForm,
+    beforeEnter: (to, from, next) => {
+      if (store.state.isLoggedIn) next({ path: "/" });
+      else next();
+    },
   },
   {
     path: "/registrar",
     name: "Registrar",
     component: SignUpForm,
+    beforeEnter: (to, from, next) => {
+      if (store.state.isLoggedIn) next({ path: "/" });
+      else next();
+    },
   },
   {
     path: "*",

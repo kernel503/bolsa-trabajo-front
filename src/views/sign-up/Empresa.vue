@@ -4,9 +4,16 @@
       <v-flex xs12 sm8 md6>
         <v-card class="elevation-12">
           <v-toolbar dark color="blue-grey darken-2">
-            <v-toolbar-title>Registrar Empresa 🏙</v-toolbar-title>
+            <v-toolbar-title>Registrar Empresa 🏭</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
+            <v-img
+              lazy-src="https://picsum.photos/id/11/10/6"
+              :max-height="150"
+              :max-width="150"
+              contain
+              :src="formData.logoUrl"
+            ></v-img>
             <v-form ref="form" v-model="valid" lazy-validation>
               <v-text-field
                 v-model.trim="formData.nombre"
@@ -17,27 +24,18 @@
                 :rules="[(value) => !!value || 'Requerido.']"
               ></v-text-field>
 
-              <v-select
-                v-model.trim="formData.id_rubro"
+              <v-autocomplete
+                v-model="formData.rubro.idRubro"
                 prepend-icon="mdi-check-bold"
-                :items="lista_rubro"
+                :items="rubros"
                 label="Rubros"
                 item-text="nombre"
-                item-value="id"
+                item-value="idRubro"
                 :rules="[(v) => !!v || 'El rubro es requerido']"
-              ></v-select>
-
-              <v-img
-                lazy-src="https://picsum.photos/id/11/10/6"
-                :max-height="250"
-                :max-width="250"
-                contain
-                :src="formData.logo_url"
-                align-center
-              ></v-img>
+              ></v-autocomplete>
 
               <v-text-field
-                v-model.trim="formData.logo_url"
+                v-model.trim="formData.logoUrl"
                 prepend-icon="mdi-link"
                 name="logo_url"
                 label="Enlace del logo"
@@ -75,38 +73,44 @@ export default {
   name: "SignUpEmpresa",
   // nombre_usuario, id_rubro, nombre, logo_url, informacion
   props: {
-    nombre_usuario: String,
+    usuario: String,
   },
   data() {
     return {
       formData: {
-        id_rubro: "",
-        informacion: "",
-        logo_url: "",
-        nombre_usuario: "",
         nombre: "",
+        logoUrl: "",
+        informacion: "",
+        nombreUsuario: "",
+        rubro: { idRubro: "" },
       },
-      lista_rubro: [
-        { id: 1, nombre: "Agroservicio" },
-        { id: 2, nombre: "Aire" },
-        { id: 3, nombre: "Alimentacion" },
-        { id: 4, nombre: "Otros" },
-      ],
+      rubros: [],
       valid: true,
     };
+  },
+  created() {
+    // eslint-disable-next-line no-undef
+    axios
+      .get("/rubro")
+      .then((result) => (this.rubros = result.data.data || []));
+    this.formData.nombreUsuario = this.usuario;
   },
   methods: {
     ingresar() {
       if (!this.$refs.form.validate()) {
-        console.log("Mostra Alerta");
         this.$store.commit("SHOW_NOTIFICATION", {
           text: "Debe verificar los campos.",
           color: "red",
         });
         return;
       }
-
-      console.log(this.formData);
+      // eslint-disable-next-line no-undef
+      axios.post("/empresa", this.formData).then((result) => {
+        this.$store.commit("SHOW_NOTIFICATION", {
+          text: result.data.message || "Operación realizada.",
+        });
+        this.$router.push("ingresar");
+      });
     },
     limpiar() {
       this.$refs.form.reset();
