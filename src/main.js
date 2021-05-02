@@ -20,6 +20,10 @@ instance.interceptors.request.use(
   },
   function (error) {
     store.commit("END_REQUEST");
+    store.commit("SHOW_NOTIFICATION", {
+      text: "Error en la petición.",
+      color: "red",
+    });
     return Promise.reject(error);
   }
 );
@@ -31,7 +35,7 @@ instance.interceptors.response.use(
   },
   function (error) {
     store.commit("END_REQUEST");
-    const text = error.response.data.message || "Error en la petición.";
+    const text = error.response?.data?.message || "Error en la petición.";
     store.commit("SHOW_NOTIFICATION", {
       text,
       color: "red",

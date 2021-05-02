@@ -16,12 +16,16 @@
         />
       </div>
       <v-spacer></v-spacer>
+      <v-btn text :to="{ name: 'listadoempleos' }" class="mr-2">
+        <v-icon>mdi-account-search</v-icon>
+      </v-btn>
+      <v-btn text :to="{ name: 'listadoempleos' }" class="mr-2">
+        <v-icon>mdi-briefcase-search</v-icon>
+      </v-btn>
       <v-btn text to="/registrar" class="mr-2" v-if="!isLoggedIn">
-        <span class="mr-2">Registrarse</span>
         <v-icon>mdi-account-plus-outline</v-icon>
       </v-btn>
       <v-btn text to="/ingresar" v-if="!isLoggedIn">
-        <span class="mr-2">Ingresar</span>
         <v-icon>mdi-login</v-icon>
       </v-btn>
     </v-app-bar>
@@ -75,7 +79,7 @@
 
         <v-divider></v-divider>
 
-        <v-list-item @click="$store.commit('LOG_OUT')">
+        <v-list-item @click="logOut">
           <v-list-item-icon>
             <v-icon dark>mdi-logout</v-icon>
           </v-list-item-icon>
@@ -138,7 +142,7 @@ export default {
   name: "App",
   data: () => ({
     sidebarMenu: true,
-    toggleMini: false,
+    toggleMini: true,
     items: [],
     right: null,
     fab: false,
@@ -147,6 +151,10 @@ export default {
     ...mapState(["isDoingRequest", "snackbar", "isLoggedIn"]),
   },
   methods: {
+    logOut() {
+      this.$store.commit("LOG_OUT");
+      this.$router.push("/");
+    },
     onScroll(e) {
       if (typeof window === "undefined") return;
       const top = window.pageYOffset || e.target.scrollTop || 0;

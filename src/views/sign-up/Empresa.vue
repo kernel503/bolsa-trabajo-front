@@ -31,7 +31,7 @@
                 label="Rubros"
                 item-text="nombre"
                 item-value="idRubro"
-                :rules="[(v) => !!v || 'El rubro es requerido']"
+                :rules="[(v) => !!v || 'El rubro es requerido.']"
               ></v-autocomplete>
 
               <v-text-field
