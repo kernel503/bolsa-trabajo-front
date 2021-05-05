@@ -124,7 +124,6 @@ export default {
       this.showForm = true;
       this.nombreEvaluacion = evaluacion.evaluacion.nombre;
       this.enunciados = evaluacion.evaluacion.enunciados;
-      console.log(evaluacion);
       this.data.idAsignacionEvaluacion = evaluacion.idAsignacionEvaluacion;
       this.data.evaluacion.idEvaluacion = evaluacion.evaluacion.idEvaluacion;
     },

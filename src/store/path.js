@@ -6,15 +6,21 @@ const rutaAdministador = [
 ];
 const rutaEmpresa = [
   {
-    title: "Crear empleo",
+    title: "Agregar Empleo",
     icon: "mdi-briefcase-plus-outline",
     href: { name: "empresaempleo" },
   },
   {
-    title: "Evaluación",
+    title: "Solicitantes Puesto",
+    icon: "mdi-badge-account-alert-outline",
+    href: { name: "solicitantespuesto" },
+  },
+  {
+    title: "Agregar Evaluación",
     icon: "mdi-ab-testing",
     href: { name: "empresaevaluacion" },
   },
+
   {
     title: "Asignar Evaluación",
     icon: "mdi-account-star",
@@ -26,6 +32,11 @@ const rutaAspirante = [
     title: "Evaluaciones",
     icon: "mdi-text-box-check",
     href: { name: "evaluacion" },
+  },
+  {
+    title: "Solicitudes a Puesto",
+    icon: "mdi-badge-account-alert-outline",
+    href: { name: "solicitantespuesto" },
   },
 ];
 export { rutaAdministador, rutaEmpresa, rutaAspirante };

@@ -72,6 +72,10 @@ export default {
 
       if (this.enunciados.length !== Object.keys(this.seleccion).length) {
         console.log("Debe completar el cuestionario");
+        this.$store.commit("SHOW_NOTIFICATION", {
+          text: "Debe completar el cuestionario.",
+          color: "red",
+        });
         return;
       }
 

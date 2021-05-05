@@ -60,7 +60,6 @@
             <v-col cols="12" sm="6">
               <v-text-field
                 v-model="data.informacionAdicional"
-                :rules="[(v) => !!v || 'Experiencia requerido']"
                 label="Comentario adicional"
               ></v-text-field>
             </v-col>

@@ -7,6 +7,9 @@
     :item-value="[idvalue]"
     :rules="[(v) => !!v || 'El campo es requerido.']"
     @input="$emit('input', select)"
+    :multiple="multiple"
+    chips
+    clearable
   ></v-autocomplete>
 </template>
 
@@ -35,6 +38,10 @@ export default {
     },
     value: {
       default: "",
+    },
+    multiple: {
+      type: Boolean,
+      default: false,
     },
   },
   created() {

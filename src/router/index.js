@@ -13,44 +13,18 @@ import ListadoEmpleo from "../views/empleo/ListadoEmpleo.vue";
 
 import EmpresaEmpleo from "../views/empresa/Empleo.vue";
 import AsignacionEvaluacion from "../views/empresa/AsignacionEvaluacion.vue";
+import Solicitante from "../views/empresa/Solicitante.vue";
 
 import EvalucionFormulario from "../views/aspirante/EvalucionFormulario.vue";
+import InformacionContacto from "../views/aspirante/InformacionContacto.vue";
 
 Vue.use(VueRouter);
 
-const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home,
-  },
-  {
-    path: "/ingresar",
-    name: "ingresar",
-    component: LoginForm,
-  },
+const routesEmpresa = [
   {
     path: "/agregar/evaluacion",
     name: "empresaevaluacion",
     component: Evaluacion,
-    beforeEnter: (to, from, next) => {
-      if (store.state.isEmpresa && store.state.isLoggedIn) next();
-      else next("/");
-    },
-  },
-  {
-    path: "/evaluacion",
-    name: "evaluacion",
-    component: EvalucionFormulario,
-    beforeEnter: (to, from, next) => {
-      if (store.state.isAspirante && store.state.isLoggedIn) next();
-      else next("/");
-    },
-  },
-  {
-    path: "/asignar/evaluacion",
-    name: "asignarevaluacion",
-    component: AsignacionEvaluacion,
     beforeEnter: (to, from, next) => {
       if (store.state.isEmpresa && store.state.isLoggedIn) next();
       else next("/");
@@ -66,9 +40,58 @@ const routes = [
     },
   },
   {
-    path: "/empleos",
-    name: "listadoempleos",
-    component: ListadoEmpleo,
+    path: "/asignar/evaluacion",
+    name: "asignarevaluacion",
+    component: AsignacionEvaluacion,
+    beforeEnter: (to, from, next) => {
+      if (store.state.isEmpresa && store.state.isLoggedIn) next();
+      else next("/");
+    },
+  },
+  {
+    path: "/solicitudes/puesto",
+    name: "solicitantespuesto",
+    component: Solicitante,
+    beforeEnter: (to, from, next) => {
+      if (
+        store.state.isEmpresa ||
+        (store.state.isAspirante && store.state.isLoggedIn)
+      )
+        next();
+      else next("/");
+    },
+  },
+];
+
+const routeAspirante = [
+  {
+    path: "/evaluacion",
+    name: "evaluacion",
+    component: EvalucionFormulario,
+    beforeEnter: (to, from, next) => {
+      if (store.state.isAspirante && store.state.isLoggedIn) next();
+      else next("/");
+    },
+  },
+  {
+    path: "/usuario/:username",
+    name: "usuarioinformacion",
+    component: InformacionContacto,
+  },
+];
+
+const routes = [
+  ...routesEmpresa,
+  ...routeAspirante,
+  {
+    path: "/",
+    name: "Home",
+    component: Home,
+  },
+  {
+    path: "/ingresar",
+    name: "ingresar",
+    component: LoginForm,
   },
   {
     path: "/registrar",
@@ -78,6 +101,11 @@ const routes = [
       if (store.state.isLoggedIn) next({ path: "/" });
       else next();
     },
+  },
+  {
+    path: "/empleos",
+    name: "listadoempleos",
+    component: ListadoEmpleo,
   },
   {
     path: "*",
