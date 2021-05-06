@@ -5,6 +5,7 @@
         <p class="text-h6 mb-2">
           {{ listado.length ? "Registro" : "No tiene registro" }}
         </p>
+        <v-divider></v-divider>
         <template v-for="solicitud in listado">
           <v-list-item :key="solicitud.idAplicarPuesto">
             <v-list-item-content>
