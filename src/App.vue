@@ -16,7 +16,7 @@
         />
       </div>
       <v-spacer></v-spacer>
-      <v-btn text :to="{ name: 'listadoempleos' }" class="mr-2">
+      <v-btn text :to="{ name: 'listadousuarios' }" class="mr-2">
         <v-icon>mdi-account-search</v-icon>
       </v-btn>
       <v-btn text :to="{ name: 'listadoempleos' }" class="mr-2">

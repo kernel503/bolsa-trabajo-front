@@ -3,7 +3,7 @@
     <v-layout align-center justify-center>
       <v-flex xs12 sm10 md10>
         <p class="text-h6 mb-2">
-          {{ listado.length ? "Mi registro" : "No tiene registro" }}
+          {{ listado.length ? "Registro" : "No tiene registro" }}
         </p>
         <template v-for="solicitud in listado">
           <v-list-item :key="solicitud.idAplicarPuesto">
@@ -31,7 +31,9 @@
               <v-icon
                 color="grey"
                 class="mr-3"
-                @click="showInfo(solicitud.nombreUsuario.nombreUsuario)"
+                @click="
+                  goToComponentInfoUser(solicitud.nombreUsuario.nombreUsuario)
+                "
               >
                 mdi-eye
               </v-icon>

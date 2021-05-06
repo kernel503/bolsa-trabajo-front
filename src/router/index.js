@@ -10,10 +10,12 @@ import SignUpForm from "../views/sign-up/Form.vue";
 import Evaluacion from "../components/Evaluacion.vue";
 
 import ListadoEmpleo from "../views/empleo/ListadoEmpleo.vue";
+import ListadoAspirante from "../views/aspirante/ListadoAspirante.vue";
 
 import EmpresaEmpleo from "../views/empresa/Empleo.vue";
 import AsignacionEvaluacion from "../views/empresa/AsignacionEvaluacion.vue";
 import Solicitante from "../views/empresa/Solicitante.vue";
+import DespliegueEvaluacion from "../views/empresa/DespliegueEvaluacion.vue";
 
 import EvalucionFormulario from "../views/aspirante/EvalucionFormulario.vue";
 import InformacionContacto from "../views/aspirante/InformacionContacto.vue";
@@ -43,6 +45,15 @@ const routesEmpresa = [
     path: "/asignar/evaluacion",
     name: "asignarevaluacion",
     component: AsignacionEvaluacion,
+    beforeEnter: (to, from, next) => {
+      if (store.state.isEmpresa && store.state.isLoggedIn) next();
+      else next("/");
+    },
+  },
+  {
+    path: "/listar/evaluacion",
+    name: "listarevaluacion",
+    component: DespliegueEvaluacion,
     beforeEnter: (to, from, next) => {
       if (store.state.isEmpresa && store.state.isLoggedIn) next();
       else next("/");
@@ -106,6 +117,11 @@ const routes = [
     path: "/empleos",
     name: "listadoempleos",
     component: ListadoEmpleo,
+  },
+  {
+    path: "/usuarios",
+    name: "listadousuarios",
+    component: ListadoAspirante,
   },
   {
     path: "*",

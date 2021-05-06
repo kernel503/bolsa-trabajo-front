@@ -11,7 +11,7 @@ const rutaEmpresa = [
     href: { name: "empresaempleo" },
   },
   {
-    title: "Solicitantes Puesto",
+    title: "Aspirantes al Puesto",
     icon: "mdi-badge-account-alert-outline",
     href: { name: "solicitantespuesto" },
   },
@@ -20,7 +20,11 @@ const rutaEmpresa = [
     icon: "mdi-ab-testing",
     href: { name: "empresaevaluacion" },
   },
-
+  {
+    title: "Listar Evaluación",
+    icon: "mdi-text-account",
+    href: { name: "listarevaluacion" },
+  },
   {
     title: "Asignar Evaluación",
     icon: "mdi-account-star",
