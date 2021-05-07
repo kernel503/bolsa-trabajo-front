@@ -33,14 +33,19 @@ const rutaEmpresa = [
 ];
 const rutaAspirante = [
   {
+    title: "Información Personal",
+    icon: "mdi-badge-account",
+    href: { name: "curriculum" },
+  },
+  {
+    title: "Marcadores de empleo",
+    icon: "mdi-badge-account-alert-outline",
+    href: { name: "solicitantespuesto" },
+  },
+  {
     title: "Evaluaciones",
     icon: "mdi-text-box-check",
     href: { name: "evaluacion" },
-  },
-  {
-    title: "Solicitudes a Puesto",
-    icon: "mdi-badge-account-alert-outline",
-    href: { name: "solicitantespuesto" },
   },
 ];
 export { rutaAdministador, rutaEmpresa, rutaAspirante };

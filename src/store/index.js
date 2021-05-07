@@ -10,10 +10,11 @@ export default new Vuex.Store({
     isLoggedIn: false,
     isDoingRequest: false,
     snackbar: { display: false, text: "", color: "indigo" },
+    username: "",
     isEmpresa: false,
     isAspirante: false,
     isAdministrador: false,
-    username: "",
+    idCv: "Not Found",
     rutas: [],
   },
   mutations: {
@@ -50,10 +51,13 @@ export default new Vuex.Store({
       if (login.data.rolEmpresa) {
         state.isEmpresa = true;
         state.rutas = rutaEmpresa;
+        return;
       }
       if (login.data.rolAspirante) {
         state.isAspirante = true;
         state.rutas = rutaAspirante;
+        state.idCv =
+          login?.data?.rolAspirante?.curriculum?.idCurriculum || "Not Found";
       }
     },
   },

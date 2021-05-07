@@ -19,6 +19,7 @@ import DespliegueEvaluacion from "../views/empresa/DespliegueEvaluacion.vue";
 
 import EvalucionFormulario from "../views/aspirante/EvalucionFormulario.vue";
 import InformacionContacto from "../views/aspirante/InformacionContacto.vue";
+import Curriculum from "../views/aspirante/Curriculum.vue";
 
 Vue.use(VueRouter);
 
@@ -79,6 +80,15 @@ const routeAspirante = [
     path: "/evaluacion",
     name: "evaluacion",
     component: EvalucionFormulario,
+    beforeEnter: (to, from, next) => {
+      if (store.state.isAspirante && store.state.isLoggedIn) next();
+      else next("/");
+    },
+  },
+  {
+    path: "/curriculum",
+    name: "curriculum",
+    component: Curriculum,
     beforeEnter: (to, from, next) => {
       if (store.state.isAspirante && store.state.isLoggedIn) next();
       else next("/");

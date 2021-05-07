@@ -3,7 +3,7 @@
     <v-layout align-center justify-center>
       <v-flex xs12 sm10 md10>
         <p class="text-h6 mb-2">
-          {{ listado.length ? "Registro" : "No tiene registro" }}
+          {{ listado.length ? "Solicitudes al puesto" : "No tiene registro" }}
         </p>
         <v-divider></v-divider>
         <template v-for="solicitud in listado">
