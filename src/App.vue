@@ -36,6 +36,7 @@
       v-model="sidebarMenu"
       :permanent="sidebarMenu"
       :mini-variant="toggleMini"
+      :mini-variant-width="80"
       dark
     >
       <v-list dense>

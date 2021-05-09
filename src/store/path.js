@@ -33,19 +33,59 @@ const rutaEmpresa = [
 ];
 const rutaAspirante = [
   {
-    title: "Información Personal",
-    icon: "mdi-badge-account",
-    href: { name: "curriculum" },
-  },
-  {
     title: "Marcadores de empleo",
-    icon: "mdi-badge-account-alert-outline",
+    icon: "mdi-bookmark-outline",
     href: { name: "solicitantespuesto" },
   },
   {
     title: "Evaluaciones",
-    icon: "mdi-text-box-check",
+    icon: "mdi-text-box",
     href: { name: "evaluacion" },
+  },
+  {
+    title: "Información Personal",
+    icon: "mdi-badge-account",
+    href: { name: "curriculumPerfil" },
+  },
+  {
+    title: "Conocimientos",
+    icon: "mdi-lightbulb-on",
+    href: { name: "curriculumConocimiento" },
+  },
+  {
+    title: "Certificados",
+    icon: "mdi-certificate",
+    href: { name: "curriculumCertificado" },
+  },
+  {
+    title: "Experiencia",
+    icon: "mdi-hammer-wrench",
+    href: { name: "curriculumExperiencia" },
+  },
+  {
+    title: "Idiomas",
+    icon: "mdi-translate",
+    href: { name: "curriculumIdioma" },
+  },
+  {
+    title: "Publicaciones",
+    icon: "mdi-bookshelf",
+    href: { name: "curriculumPublicacion" },
+  },
+  {
+    title: "Referencias",
+    icon: "mdi-cellphone-basic",
+    href: { name: "curriculumReferencia" },
+  },
+  {
+    title: "Habilidades",
+    icon: "mdi-hand-saw",
+    href: { name: "curriculumHabilidad" },
+  },
+  {
+    title: "Logros",
+    icon: "mdi-account-star-outline",
+    href: { name: "curriculumLogro" },
   },
 ];
 export { rutaAdministador, rutaEmpresa, rutaAspirante };
