@@ -59,7 +59,9 @@ const evaluacionInicial = Object.freeze({
 });
 export default {
   name: "Evaluacion",
+
   components: { Enunciado },
+
   data() {
     return {
       valid: true,
@@ -75,18 +77,21 @@ export default {
       },
     };
   },
+
   watch: {
     preguntas(newValue) {
       this.data.cantidadPreguntas = newValue.length;
       this.data.enunciados = newValue;
     },
   },
+
   created() {
     // eslint-disable-next-line no-undef
     axios
       .get("/categoria/evaluacion")
       .then((result) => (this.listado = result.data.data || []));
   },
+
   methods: {
     almacenarEvaluacion() {
       if (!this.$refs.form.validate()) {
@@ -126,6 +131,7 @@ export default {
         this.enunciado = "";
       }
     },
+
     editarEnunciado(valor, indice) {
       this.preguntas[indice] = { ...valor };
     },

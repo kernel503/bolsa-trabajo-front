@@ -91,7 +91,7 @@
                   udpdate(solicitud.idSolicitudEmpleo, !solicitud.visible)
                 "
               >
-                {{ solicitud.visible ? "Ocultar" : "Habilitar" }}
+                Ocultar
               </v-btn>
             </v-card-actions>
             <v-card-actions
@@ -142,6 +142,7 @@ export default {
       }
       this.fetchData();
     },
+
     idDepartamento(value) {
       if (value.length) {
         this.formData.idDepartamento = value.join(", ");
@@ -150,6 +151,7 @@ export default {
       }
       this.fetchData();
     },
+
     cargo(value) {
       if (value) {
         this.formData.cargo = value;
@@ -165,8 +167,12 @@ export default {
       // eslint-disable-next-line no-undef
       axios
         .get("/solicitud/empleo/filtro", { params: this.formData })
-        .then((result) => (this.listado = result?.data?.data || []));
+        .then((result) => {
+          this.listado = result?.data?.data || [];
+          this.listado = this.listado.filter((current) => current.visible);
+        });
     },
+
     udpdate(id, status) {
       // eslint-disable-next-line no-undef
       axios.put(`/solicitud/empleo/${id}/${status}`).then((result) => {
@@ -176,6 +182,7 @@ export default {
         this.fetchData();
       });
     },
+
     aplicar(id) {
       const data = {
         nombreUsuario: { nombreUsuario: this.$store.state.username },

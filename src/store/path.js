@@ -1,8 +1,55 @@
 const rutaAdministador = [
-  { title: "Rubro", icon: "mdi-domain" },
-  { title: "Pais", icon: "mdi-earth" },
-  { title: "Departamento", icon: "mdi-map-marker" },
-  { title: "Tipo de empleo", icon: "mdi-briefcase" },
+  {
+    title: "Rubro de empresa",
+    icon: "mdi-domain",
+    href: { name: "adminRubro" },
+  },
+  {
+    title: "Tipo de empleo",
+    icon: "mdi-briefcase",
+    href: { name: "adminTipoEmpleo" },
+  },
+  { title: "Pais", icon: "mdi-earth", href: { name: "adminPais" } },
+  {
+    title: "Departamento",
+    icon: "mdi-map-marker",
+    href: { name: "adminDepartamento" },
+  },
+  {
+    title: "Idioma",
+    icon: "mdi-translate",
+    href: { name: "adminIdioma" },
+  },
+  {
+    title: "Manejo idioma",
+    icon: "mdi-star",
+    href: { name: "adminNivelDominio" },
+  },
+  {
+    title: "Habilidad idioma",
+    icon: "mdi-account-voice",
+    href: { name: "adminLenguaCategoria" },
+  },
+  {
+    title: "Categoria evaluación",
+    icon: "mdi-text-account",
+    href: { name: "adminCategoriaEvaluacion" },
+  },
+  {
+    title: "Categoria habilidades",
+    icon: "mdi-hammer-screwdriver",
+    href: { name: "adminCategoriaHabilidad" },
+  },
+  {
+    title: "Categoria publicación",
+    icon: "mdi-text-box-check",
+    href: { name: "adminPublicacionCategoria" },
+  },
+  {
+    title: "Categoria tipo conocimiento",
+    icon: "mdi-school",
+    href: { name: "adminTipoConocimiento" },
+  },
 ];
 const rutaEmpresa = [
   {

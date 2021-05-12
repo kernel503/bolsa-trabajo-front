@@ -13,7 +13,7 @@ export default new Vuex.Store({
     username: "",
     isEmpresa: false,
     isAspirante: false,
-    isAdministrador: false,
+    isAdmin: false,
     idCv: "Not Found",
     rutas: [],
   },
@@ -44,7 +44,7 @@ export default new Vuex.Store({
       state.isLoggedIn = true;
       state.username = login.data.nombreUsuario;
       if (login.data.idRol === 1) {
-        state.isAdministrador = true;
+        state.isAdmin = true;
         state.rutas = rutaAdministador;
         return;
       }

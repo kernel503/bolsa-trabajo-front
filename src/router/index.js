@@ -8,14 +8,13 @@ import NotFound from "../views/error/NotFound.vue";
 import LoginForm from "../views/login/Form.vue";
 import SignUpForm from "../views/sign-up/Form.vue";
 
-import Evaluacion from "../components/Evaluacion.vue";
-
 import ListadoEmpleo from "../views/empleo/ListadoEmpleo.vue";
 import ListadoAspirante from "../views/aspirante/ListadoAspirante.vue";
 
+import Evaluacion from "../components/Evaluacion.vue";
+import Solicitante from "../views/empresa/Solicitante.vue";
 import EmpresaEmpleo from "../views/empresa/Empleo.vue";
 import AsignacionEvaluacion from "../views/empresa/AsignacionEvaluacion.vue";
-import Solicitante from "../views/empresa/Solicitante.vue";
 import DespliegueEvaluacion from "../views/empresa/DespliegueEvaluacion.vue";
 
 import EvalucionFormulario from "../views/aspirante/EvalucionFormulario.vue";
@@ -30,7 +29,89 @@ import ConocimientoAcademico from "../views/aspirante/ConocimientoAcademico.vue"
 import PublicacionLiteraria from "../views/aspirante/PublicacionLiteraria.vue";
 import DetalleIdioma from "../views/aspirante/DetalleIdioma.vue";
 
+import AdminBase from "../views/admin/AdminBase.vue";
+import Rubro from "../views/admin/Rubro.vue";
+import TipoEmpleo from "../views/admin/TipoEmpleo.vue";
+import Pais from "../views/admin/Pais.vue";
+import Departamento from "../views/admin/Departamento.vue";
+import Idioma from "../views/admin/Idioma.vue";
+import NivelDominio from "../views/admin/NivelDominio.vue";
+import LenguaCategoria from "../views/admin/LenguaCategoria.vue";
+import CategoriaEvaluacion from "../views/admin/CategoriaEvaluacion.vue";
+import CategoriaHabilidad from "../views/admin/CategoriaHabilidad.vue";
+import PublicacionCategoria from "../views/admin/PublicacionCategoria.vue";
+import TipoConocimiento from "../views/admin/TipoConocimiento.vue";
+
 Vue.use(VueRouter);
+
+const routeAdministrador = [
+  {
+    path: "/admin",
+    name: "adminBase",
+    component: AdminBase,
+    beforeEnter: (to, from, next) => {
+      if (store.state.isAdmin && store.state.isLoggedIn) next();
+      else next("/");
+    },
+    children: [
+      {
+        path: "rubro",
+        name: "adminRubro",
+        component: Rubro,
+      },
+      {
+        path: "categoria/evaluacion",
+        name: "adminCategoriaEvaluacion",
+        component: CategoriaEvaluacion,
+      },
+      {
+        path: "tipo/empleo",
+        name: "adminTipoEmpleo",
+        component: TipoEmpleo,
+      },
+      {
+        path: "idioma",
+        name: "adminIdioma",
+        component: Idioma,
+      },
+      {
+        path: "nivel/dominio",
+        name: "adminNivelDominio",
+        component: NivelDominio,
+      },
+      {
+        path: "/lengua/categoria",
+        name: "adminLenguaCategoria",
+        component: LenguaCategoria,
+      },
+      {
+        path: "pais",
+        name: "adminPais",
+        component: Pais,
+      },
+      {
+        path: "departamento",
+        name: "adminDepartamento",
+        component: Departamento,
+      },
+      {
+        path: "categoria/habilidad",
+        name: "adminCategoriaHabilidad",
+        component: CategoriaHabilidad,
+      },
+      {
+        path: "publicacion/categoria",
+        name: "adminPublicacionCategoria",
+        component: PublicacionCategoria,
+      },
+      {
+        path: "tipo/conocimiento",
+        name: "adminTipoConocimiento",
+        component: TipoConocimiento,
+      },
+    ],
+  },
+];
 
 const routesEmpresa = [
   {
@@ -185,10 +266,11 @@ const routeAspirante = [
 const routes = [
   ...routesEmpresa,
   ...routeAspirante,
+  ...routeAdministrador,
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: Pais,
   },
   {
     path: "/show",
