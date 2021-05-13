@@ -16,6 +16,7 @@ export default new Vuex.Store({
     isAdmin: false,
     idCv: "Not Found",
     rutas: [],
+    permisos: [],
   },
   mutations: {
     START_REQUEST(state) {
@@ -37,25 +38,54 @@ export default new Vuex.Store({
     },
     VALIDATE_SESSION(state) {
       const login = JSON.parse(localStorage.getItem("login"));
+      state.permisos = login?.data?.permiso?.grupoRuta || [];
+
       if (!login) {
         state.isLoggedIn = false;
         return;
       }
+
       state.isLoggedIn = true;
       state.username = login.data.nombreUsuario;
+
+      if (login.data.idRol === 4) {
+        state.rutas = [];
+        return;
+      }
+
       if (login.data.idRol === 1) {
         state.isAdmin = true;
-        state.rutas = rutaAdministador;
+        let ruta = rutaAdministador;
+        if (state.permisos.length) {
+          ruta = rutaAdministador.filter((current) =>
+            state.permisos.includes(current.href.name)
+          );
+        }
+        state.rutas = ruta;
         return;
       }
-      if (login.data.rolEmpresa) {
+
+      if (login.data.idRol === 2) {
         state.isEmpresa = true;
-        state.rutas = rutaEmpresa;
+        let ruta = rutaEmpresa;
+        if (state.permisos.length) {
+          ruta = rutaEmpresa.filter((current) =>
+            state.permisos.includes(current.href.name)
+          );
+        }
+        state.rutas = ruta;
         return;
       }
-      if (login.data.rolAspirante) {
+
+      if (login.data.idRol === 3) {
         state.isAspirante = true;
-        state.rutas = rutaAspirante;
+        let ruta = rutaAspirante;
+        if (state.permisos.length) {
+          ruta = rutaAspirante.filter((current) =>
+            state.permisos.includes(current.href.name)
+          );
+        }
+        state.rutas = ruta;
         state.idCv =
           login?.data?.rolAspirante?.curriculum?.idCurriculum || "Not Found";
       }
