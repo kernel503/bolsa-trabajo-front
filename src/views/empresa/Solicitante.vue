@@ -33,7 +33,7 @@
                 color="grey"
                 class="mr-3"
                 @click="
-                  goToComponentInfoUser(solicitud.nombreUsuario.nombreUsuario)
+                  goToInfoUserComponent(solicitud.nombreUsuario.nombreUsuario)
                 "
               >
                 mdi-eye
@@ -83,6 +83,7 @@ export default {
     sendMessage(email, job) {
       window.location.href = `mailto:${email}?subject=${job}&body=Solicitud`;
     },
+
     eliminar(id) {
       // eslint-disable-next-line no-undef
       axios.delete("/aplicar/puesto/" + id).then((result) => {
@@ -92,6 +93,7 @@ export default {
         this.obtenerListado();
       });
     },
+
     obtenerListado() {
       let url = "/aplicar/puesto/";
       if (this.$store.state.isAspirante) {
@@ -102,7 +104,8 @@ export default {
         .get(url + this.$store.state.username)
         .then((result) => (this.listado = result.data.data || []));
     },
-    goToComponentInfoUser(user) {
+
+    goToInfoUserComponent(user) {
       this.$router.push({
         name: "usuarioinformacion",
         params: { username: user },

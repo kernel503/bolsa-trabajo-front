@@ -11,6 +11,9 @@ import LoginForm from "../views/login/Form.vue";
 import ListadoEmpleo from "../views/listado/Empleo.vue";
 import ListadoAspirante from "../views/listado/Aspirante.vue";
 
+import InformacionContacto from "../views/aspirante/InformacionContacto.vue";
+import Solicitante from "../views/empresa/Solicitante.vue";
+
 import rutasAdministrador from "./router-administrador";
 import rutasAspirante from "./router-aspirante";
 import rutasEmpresa from "./router-empresa";
@@ -30,6 +33,10 @@ const routes = [
     path: "/ingresar",
     name: "ingresar",
     component: LoginForm,
+    beforeEnter: (to, from, next) => {
+      if (store.state.isLoggedIn) next({ path: "/" });
+      else next();
+    },
   },
   {
     path: "/registrar",
@@ -49,6 +56,20 @@ const routes = [
     path: "/usuarios",
     name: "listadousuarios",
     component: ListadoAspirante,
+  },
+  {
+    path: "/usuario/:username",
+    name: "usuarioinformacion",
+    component: InformacionContacto,
+  },
+  {
+    path: "/solicitudes/puesto",
+    name: "solicitantespuesto",
+    component: Solicitante,
+    beforeEnter: (to, from, next) => {
+      if (store.state.permisos.includes("solicitantespuesto")) next();
+      else next("/");
+    },
   },
   {
     path: "*",

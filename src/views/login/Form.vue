@@ -54,7 +54,6 @@ export default {
   methods: {
     ingresar() {
       if (!this.$refs.form.validate()) {
-        console.log("Mostra Alerta");
         this.$store.commit("SHOW_NOTIFICATION", {
           text: "Debe completar los campos.",
           color: "red",
@@ -67,8 +66,8 @@ export default {
         this.$store.commit("SHOW_NOTIFICATION", {
           text: result.data.message || "Operación realizada.",
         });
-        this.$store.commit("LOG_IN");
         this.$router.push("/");
+        window.location.reload();
       });
     },
   },

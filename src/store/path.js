@@ -1,5 +1,10 @@
 const rutaAdministador = [
   {
+    title: "Crear Rol",
+    icon: "mdi-account-check",
+    href: { name: "adminGestionarRol" },
+  },
+  {
     title: "Rubro de empresa",
     icon: "mdi-domain",
     href: { name: "adminRubro" },
@@ -51,6 +56,7 @@ const rutaAdministador = [
     href: { name: "adminTipoConocimiento" },
   },
 ];
+
 const rutaEmpresa = [
   {
     title: "Agregar Empleo",
@@ -78,6 +84,7 @@ const rutaEmpresa = [
     href: { name: "asignarevaluacion" },
   },
 ];
+
 const rutaAspirante = [
   {
     title: "Marcadores de empleo",

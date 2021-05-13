@@ -9,7 +9,7 @@ store.commit("VALIDATE_SESSION");
 
 const instance = axios.create({
   baseURL: "http://localhost:8080/api",
-  timeout: 5000,
+  timeout: 8000,
   headers: { Accept: "application/json", "Content-Type": "application/json" },
 });
 

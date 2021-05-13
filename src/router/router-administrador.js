@@ -11,7 +11,7 @@ import CategoriaEvaluacion from "../views/admin/CategoriaEvaluacion.vue";
 import CategoriaHabilidad from "../views/admin/CategoriaHabilidad.vue";
 import PublicacionCategoria from "../views/admin/PublicacionCategoria.vue";
 import TipoConocimiento from "../views/admin/TipoConocimiento.vue";
-//import GestionarRol from "../views/admin/GestionarRol.vue";
+import GestionarRol from "../views/admin/GestionarRol.vue";
 export default [
   {
     path: "/admin",
@@ -22,6 +22,15 @@ export default [
       else next("/");
     },
     children: [
+      {
+        path: "rol",
+        name: "adminGestionarRol",
+        component: GestionarRol,
+        beforeEnter: (to, from, next) => {
+          if (store.state.permisos.includes("adminGestionarRol")) next();
+          else next("/");
+        },
+      },
       {
         path: "rubro",
         name: "adminRubro",

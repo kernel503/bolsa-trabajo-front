@@ -143,7 +143,6 @@ export default {
       axios
         .post("/usuario/crear", null, { params: this.formData })
         .then((result) => {
-          console.log(result);
           this.usuario = result.data.nombreUsuario;
           this.e1 = 2;
           this.$store.commit("SHOW_NOTIFICATION", {

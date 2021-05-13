@@ -22,14 +22,9 @@
           </v-card-subtitle>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn icon @click="show = !show">
-              <v-icon>{{
-                show ? "mdi-chevron-up" : "mdi-chevron-down"
-              }}</v-icon>
-            </v-btn>
           </v-card-actions>
           <v-expand-transition>
-            <div v-show="show">
+            <div>
               <v-divider></v-divider>
               <template v-for="(enunciado, i) in testPickedValue.enunciados">
                 <v-card-title :key="enunciado.idEnunciado">
@@ -60,7 +55,6 @@ export default {
   name: "DespliegueEvaluacion",
   data() {
     return {
-      show: false,
       listado: [],
       selected: 0,
       testPicked: null,
@@ -71,11 +65,6 @@ export default {
       return this.listado.filter(
         (element) => element.idEvaluacion === this.testPicked
       )[0];
-    },
-  },
-  watch: {
-    testPicked() {
-      this.show = false;
     },
   },
   created() {

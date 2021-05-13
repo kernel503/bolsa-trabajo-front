@@ -4,6 +4,7 @@
       :items="roles"
       v-model="nombreRol"
       label="Seleccionar Rol"
+      clearable
     ></v-select>
     <v-text-field
       v-model.trim="descripcionGrupo"
@@ -38,6 +39,38 @@
       </v-list-item-group>
       <v-btn color="primary" dark class="mb-2" @click="save"> Guardar </v-btn>
     </v-list>
+    <v-divider></v-divider>
+    <v-list flat subheader three-line>
+      <v-subheader>Roles disponibles</v-subheader>
+      <v-list-item-group>
+        <template v-for="ruta in rolesDb">
+          <v-list-item :key="ruta.idPermiso">
+            <v-list-item-content>
+              <v-list-item-title>
+                {{ ruta.descripcionGrupo }}
+              </v-list-item-title>
+              <v-list-item-subtitle class="my-2">
+                Usuario aplicable: {{ ruta.nombreRol }}
+              </v-list-item-subtitle>
+              <v-list-item-subtitle>
+                {{ ruta.grupoRuta }}
+              </v-list-item-subtitle>
+            </v-list-item-content>
+            <v-list-item-icon
+              v-if="
+                ruta.idPermiso !== 1 &&
+                ruta.idPermiso !== 2 &&
+                ruta.idPermiso !== 3
+              "
+            >
+              <v-icon color="red" @click="deleteRol(ruta.idPermiso)">
+                mdi-delete
+              </v-icon>
+            </v-list-item-icon>
+          </v-list-item>
+        </template>
+      </v-list-item-group>
+    </v-list>
   </v-container>
 </template>
 <script>
@@ -49,9 +82,11 @@ export default {
     nombreRol: "",
     descripcionGrupo: "",
     roles: ["administrador", "aspirante", "empresa"],
+    rolesDb: [],
     rutasSeleccionadas: [],
     rutasDisponibles: {
       administrador: [
+        { name: "adminGestionarRol", descripcion: "Administrar Roles" },
         { name: "adminRubro", descripcion: "CRUD Rubro" },
         {
           name: "adminCategoriaEvaluacion",
@@ -159,6 +194,10 @@ export default {
     },
   }),
 
+  created() {
+    this.fetchData();
+  },
+
   computed: {
     listadoRutasPorRol() {
       return this.rutasDisponibles[this.nombreRol] || [];
@@ -201,6 +240,7 @@ export default {
             this.$store.commit("SHOW_NOTIFICATION", {
               text: "Nuevo rol disponible.",
             });
+            this.fetchData();
           }
         })
         .catch(() => {
@@ -213,6 +253,33 @@ export default {
           this.nombreRol = null;
           this.descripcionGrupo = "";
           this.rutasSeleccionadas = [];
+        });
+    },
+
+    fetchData() {
+      // eslint-disable-next-line no-undef
+      axios.get(this.urlBase).then((response) => {
+        if (response.data.statusCode === 200) {
+          this.rolesDb = response?.data?.data || [];
+        }
+      });
+    },
+
+    deleteRol(idRol) {
+      // eslint-disable-next-line no-undef
+      axios
+        .delete(this.urlBase + idRol)
+        .then(() => {
+          this.$store.commit("SHOW_NOTIFICATION", {
+            text: "Elemento eliminado.",
+          });
+          this.fetchData();
+        })
+        .catch(() => {
+          this.$store.commit("SHOW_NOTIFICATION", {
+            text: "No se puede eliminar este registro FK.",
+            color: "red",
+          });
         });
     },
   },
