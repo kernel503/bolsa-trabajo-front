@@ -23,7 +23,7 @@
 - [ ] Logros
 - [ ] Habilidades del lenguaje
 - [ ] Recomendaciones
-- [ ] Participación en congreso. (Sin implementar, No existe la tabla)
+- [ ] Participación en congreso (Sin implementar, No existe la tabla)
 - [ ] Publicaciones de artículos
 - [ ] Realizar exámenes, desplegar resultado
 - [ ] Aplicar a los puestos de trabajo
