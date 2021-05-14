@@ -134,7 +134,7 @@
         ><v-icon>mdi-arrow-up</v-icon>
       </v-btn>
     </v-main>
-    <v-footer v-if="!sidebarMenu">
+    <v-footer v-show="!sidebarMenu">
       <v-col class="text-center py-0 my-1" cols="12">
         {{ new Date().toISOString().slice(0, 10) }} —
         <strong>Aldebaran</strong>
