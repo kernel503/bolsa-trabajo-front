@@ -44,6 +44,13 @@
               >
                 <v-icon>mdi-twitter</v-icon>
               </v-btn>
+              <v-btn
+                @click="sendEmail(informacionUsuario.contacto.correo)"
+                text
+                color="green darken-4"
+              >
+                <v-icon>mdi-email-send</v-icon>
+              </v-btn>
             </div>
           </v-card-text>
           <v-divider class="mx-4"></v-divider>
@@ -295,6 +302,10 @@ export default {
       axios
         .get("/aspirante/" + this.$route.params.username)
         .then((result) => (this.informacionUsuario = result?.data?.data || {}));
+    },
+
+    sendEmail(email) {
+      window.open(`mailto:${email}?subject=Sitio Aldebaran&body=Hi!`);
     },
   },
 };
