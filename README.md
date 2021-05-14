@@ -2,7 +2,7 @@
 
 ## Listado de requerimientos funcionales
 
-- [] Comparar puestos de trabajo?
+- [ ] Comparar puestos de trabajo?
 
 ### Empresa
 - [ ] Crear perfiles de contratación (ofertas de trabajo)
