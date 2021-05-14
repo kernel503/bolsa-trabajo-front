@@ -134,6 +134,20 @@
         ><v-icon>mdi-arrow-up</v-icon>
       </v-btn>
     </v-main>
+    <v-footer v-if="!sidebarMenu">
+      <v-col class="text-center" cols="12">
+        {{ new Date().toISOString().slice(0, 10) }} —
+        <strong>Aldebaran</strong>
+      </v-col>
+      <v-col class="text-center py-0 my-0" cols="12">
+        <v-btn class="mx-3" @click="sendEmailToAdmin">
+          Contactar al administrador
+          <v-icon color="light-blue darken-4" class="mx-3"
+            >mdi-email-send</v-icon
+          >
+        </v-btn>
+      </v-col>
+    </v-footer>
   </v-app>
 </template>
 
@@ -142,7 +156,7 @@ import { mapState } from "vuex";
 export default {
   name: "App",
   data: () => ({
-    sidebarMenu: true,
+    sidebarMenu: false,
     toggleMini: true,
     items: [],
     right: null,
@@ -156,13 +170,21 @@ export default {
       this.$store.commit("LOG_OUT");
       this.$router.push("/");
     },
+
     onScroll(e) {
       if (typeof window === "undefined") return;
       const top = window.pageYOffset || e.target.scrollTop || 0;
       this.fab = top > 20;
     },
+
     toTop() {
       this.$vuetify.goTo(0);
+    },
+
+    sendEmailToAdmin() {
+      window.open(
+        "mailto:juanko682@gmail.com?subject=Sitio Aldebaran&body=Hi!"
+      );
     },
   },
 };

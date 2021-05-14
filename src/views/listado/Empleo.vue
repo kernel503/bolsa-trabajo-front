@@ -3,7 +3,7 @@
     <v-row class="my-0">
       <v-col cols="12" sm="6">
         <v-text-field
-          label="Filtrar puesto puesto"
+          label="Filtrar puesto"
           v-model.trim="cargo"
           clearable
         ></v-text-field
@@ -71,10 +71,43 @@
             <v-card-title>{{ solicitud.perfilAcademico }}</v-card-title>
             <v-card-text>
               {{ solicitud.fechaRegistro }}
-              <div>{{ solicitud.habilidad }}</div>
-              <div>{{ solicitud.experiencia }}</div>
-              <div>{{ solicitud.rangoSalarial }}</div>
-              <div>{{ solicitud.informacionAdicional }}</div>
+
+              <div class="mt-2">
+                Perfil solicitado
+                <ul v-for="(li, i) in solicitud.habilidad.split('.')" :key="i">
+                  <li v-if="li">{{ li }}.</li>
+                </ul>
+              </div>
+
+              <div class="mt-2">
+                Experiencia
+                <ul
+                  v-for="(li, i) in solicitud.experiencia.split('.')"
+                  :key="i"
+                >
+                  <li v-if="li">{{ li }}.</li>
+                </ul>
+              </div>
+
+              <div class="mt-2">
+                Salario
+                <ul
+                  v-for="(li, i) in solicitud.rangoSalarial.split('.')"
+                  :key="i"
+                >
+                  <li v-if="li">{{ li }}.</li>
+                </ul>
+              </div>
+
+              <div class="mt-2" v-if="solicitud.informacionAdicional">
+                Información Adicional
+                <ul
+                  v-for="(li, i) in solicitud.informacionAdicional.split('.')"
+                  :key="i"
+                >
+                  <li v-if="li">{{ li }}.</li>
+                </ul>
+              </div>
             </v-card-text>
             <v-card-actions
               v-if="

@@ -81,11 +81,11 @@ export default {
     urlBase: "/permiso/",
     nombreRol: "",
     descripcionGrupo: "",
-    roles: ["administrador", "aspirante", "empresa"],
+    roles: ["Administrador", "Aspirante", "Empresa"],
     rolesDb: [],
     rutasSeleccionadas: [],
     rutasDisponibles: {
-      administrador: [
+      Administrador: [
         { name: "adminGestionarRol", descripcion: "Administrar Roles" },
         { name: "adminRubro", descripcion: "CRUD Rubro" },
         {
@@ -129,7 +129,7 @@ export default {
           descripcion: "CRUD Tipo Conocimiento",
         },
       ],
-      aspirante: [
+      Aspirante: [
         {
           name: "solicitantespuesto",
           descripcion: "Solicitudes Personales a Puesto",
@@ -175,7 +175,7 @@ export default {
           descripcion: "CRD Logros",
         },
       ],
-      empresa: [
+      Empresa: [
         { name: "empresaevaluacion", descripcion: "Crear Evaluaciones" },
         { name: "empresaempleo", descripcion: "Crear Empleo" },
         {

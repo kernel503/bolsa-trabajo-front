@@ -7,15 +7,15 @@
             <v-col cols="12" sm="6">
               <v-text-field
                 v-model="data.perfilAcademico"
-                :rules="[(v) => !!v || 'Perfil requerido']"
-                label="Perfil solicitado"
+                :rules="[(v) => !!v || 'Campo requerido']"
+                label="Posición laboral"
               ></v-text-field>
             </v-col>
             <v-col cols="12" sm="6">
               <v-text-field
                 v-model="data.habilidad"
-                :rules="[(v) => !!v || 'Habilidad requerido']"
-                label="Competencias"
+                :rules="[(v) => !!v || 'Campo requerido']"
+                label="Conocimientos o Habilidades"
               ></v-text-field>
             </v-col>
           </v-row>
@@ -40,7 +40,7 @@
             <v-col cols="12" sm="6">
               <AutoCompleteApi
                 path="/tipo/empleo"
-                label="Seleccionar el tipo de empleo."
+                label="Tipo de Empleo"
                 text="nombre"
                 idvalue="idTipoEmpleo"
                 v-model="data.tipoEmpleo.idTipoEmpleo"
@@ -49,7 +49,7 @@
             <v-col cols="12" sm="6">
               <AutoCompleteApi
                 path="/departamento"
-                label="Seleccionar el departamento."
+                label="Departamento"
                 text="nombre"
                 idvalue="idDepartamento"
                 v-model="data.departamento.idDepartamento"
@@ -60,7 +60,7 @@
             <v-col cols="12" sm="6">
               <v-text-field
                 v-model="data.informacionAdicional"
-                label="Comentario adicional"
+                label="Comentario Adicional"
               ></v-text-field>
             </v-col>
             <v-col cols="12" sm="6">

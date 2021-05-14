@@ -1,6 +1,11 @@
 const rutaAdministador = [
   {
-    title: "Crear Rol",
+    title: "Permisos y Desbloqueo",
+    icon: "mdi-account-cog-outline",
+    href: { name: "adminPermisosDesbloqueo" },
+  },
+  {
+    title: "Crear roles",
     icon: "mdi-account-check",
     href: { name: "adminGestionarRol" },
   },

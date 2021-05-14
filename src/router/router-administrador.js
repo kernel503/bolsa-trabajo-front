@@ -12,6 +12,8 @@ import CategoriaHabilidad from "../views/admin/CategoriaHabilidad.vue";
 import PublicacionCategoria from "../views/admin/PublicacionCategoria.vue";
 import TipoConocimiento from "../views/admin/TipoConocimiento.vue";
 import GestionarRol from "../views/admin/GestionarRol.vue";
+import AsignarPermisosRecuperacion from "../views/admin/AsignarPermisosRecuperacion.vue";
+
 export default [
   {
     path: "/admin",
@@ -23,7 +25,16 @@ export default [
     },
     children: [
       {
-        path: "rol",
+        path: "usuarios/permisos/desbloqueo",
+        name: "adminPermisosDesbloqueo",
+        component: AsignarPermisosRecuperacion,
+        beforeEnter: (to, from, next) => {
+          if (store.state.permisos.includes("adminPermisosDesbloqueo")) next();
+          else next("/");
+        },
+      },
+      {
+        path: "permisos",
         name: "adminGestionarRol",
         component: GestionarRol,
         beforeEnter: (to, from, next) => {

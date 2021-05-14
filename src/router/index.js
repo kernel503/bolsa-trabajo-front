@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Vue from "vue";
 import VueRouter from "vue-router";
 import store from "@/store";
@@ -18,6 +19,8 @@ import rutasAdministrador from "./router-administrador";
 import rutasAspirante from "./router-aspirante";
 import rutasEmpresa from "./router-empresa";
 
+import AsignarPermisosRecuperacion from "../views/admin/AsignarPermisosRecuperacion.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -27,7 +30,7 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: AsignarPermisosRecuperacion,
   },
   {
     path: "/ingresar",
