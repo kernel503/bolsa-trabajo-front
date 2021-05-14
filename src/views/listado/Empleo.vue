@@ -3,6 +3,13 @@
     <v-row class="my-0">
       <v-col cols="12" sm="6">
         <v-text-field
+          label="Nombre empresa"
+          v-model.trim="empresa"
+          clearable
+        ></v-text-field
+      ></v-col>
+      <v-col cols="12" sm="6">
+        <v-text-field
           label="Filtrar puesto"
           v-model.trim="cargo"
           clearable
@@ -33,8 +40,8 @@
     </v-row>
 
     <v-row>
-      <p class="text-h6 mb-2" v-if="!listado.length">Sin resultados</p>
-      <template v-for="solicitud in listado">
+      <p class="text-h6 mb-2" v-if="!filtroEmpleos.length">Sin resultados</p>
+      <template v-for="solicitud in filtroEmpleos">
         <v-col
           class="d-flex"
           cols="12"
@@ -53,7 +60,7 @@
             <div class="d-flex flex-column justify-space-between align-center">
               <v-img
                 class="align-self-stretch"
-                :aspect-ratio="16 / 4"
+                :aspect-ratio="16 / 8"
                 :src="solicitud.empresa.logoUrl"
                 contain
               ></v-img>
@@ -152,14 +159,29 @@ export default {
   components: {
     AutoCompleteApi,
   },
+
   data() {
     return {
       idTipoPuesto: [],
       idDepartamento: [],
       cargo: "",
+      empresa: "",
       formData: { idTipoPuesto: "", idDepartamento: "", cargo: "" },
       listado: [],
     };
+  },
+
+  computed: {
+    filtroEmpleos() {
+      if (this.empresa) {
+        return this.listado.filter((current) =>
+          current.empresa.nombreUsuario
+            .toLowerCase()
+            .includes(this.empresa.toLowerCase())
+        );
+      }
+      return this.listado;
+    },
   },
 
   created() {

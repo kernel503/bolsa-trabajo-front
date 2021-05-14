@@ -63,7 +63,7 @@
         </v-btn>
       </v-list-item>
       <v-divider></v-divider>
-      <v-list>
+      <v-list class="py-0">
         <v-list-item
           v-for="item in $store.state.rutas"
           :key="item.title"
@@ -97,7 +97,7 @@
         color="red"
         v-if="isDoingRequest"
       ></v-progress-linear>
-      <v-container class="px-4 py-0 fill-height" fluid>
+      <v-container class="px-4 py-4 fill-height" fluid>
         <v-row class="fill-height">
           <v-col>
             <transition name="fade">
@@ -135,12 +135,12 @@
       </v-btn>
     </v-main>
     <v-footer v-if="!sidebarMenu">
-      <v-col class="text-center" cols="12">
+      <v-col class="text-center py-0 my-1" cols="12">
         {{ new Date().toISOString().slice(0, 10) }} —
         <strong>Aldebaran</strong>
       </v-col>
       <v-col class="text-center py-0 my-0" cols="12">
-        <v-btn class="mx-3" @click="sendEmailToAdmin">
+        <v-btn class="mx-3" @click="sendEmailToAdmin" small>
           Contactar al administrador
           <v-icon color="light-blue darken-4" class="mx-3"
             >mdi-email-send</v-icon

@@ -19,8 +19,6 @@ import rutasAdministrador from "./router-administrador";
 import rutasAspirante from "./router-aspirante";
 import rutasEmpresa from "./router-empresa";
 
-import AsignarPermisosRecuperacion from "../views/admin/AsignarPermisosRecuperacion.vue";
-
 Vue.use(VueRouter);
 
 const routes = [
@@ -30,7 +28,7 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: AsignarPermisosRecuperacion,
+    component: Home,
   },
   {
     path: "/ingresar",

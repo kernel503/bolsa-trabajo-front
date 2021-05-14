@@ -86,6 +86,10 @@ export default {
     rutasSeleccionadas: [],
     rutasDisponibles: {
       Administrador: [
+        {
+          name: "adminPermisosDesbloqueo",
+          descripcion: "Asignación de roles y desbloqueo de cuentas",
+        },
         { name: "adminGestionarRol", descripcion: "Administrar Roles" },
         { name: "adminRubro", descripcion: "CRUD Rubro" },
         {
