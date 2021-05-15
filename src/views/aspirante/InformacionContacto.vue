@@ -1,12 +1,11 @@
 <template>
   <v-container>
     <v-layout align-center justify-center>
-      <v-flex xs12 sm10 md10>
+      <v-flex xs12 sm9 md9>
         <v-card class="mx-auto" v-if="informacionUsuario !== null">
           <v-img
             :src="informacionUsuario.curriculum.foto"
-            max-height="150"
-            max-width="250"
+            height="200px"
             contain
           ></v-img>
           <v-card-title>
@@ -102,8 +101,8 @@
           <template
             v-if="informacionUsuario.curriculum.conocimientosAcademicos.length"
           >
-            <v-card-title>Conocimiento</v-card-title>
-            <v-card-text>
+            <v-card-title class="py-0">Conocimiento</v-card-title>
+            <v-card-text class="py-0">
               <v-list two-line subheader>
                 <template
                   v-for="item in informacionUsuario.curriculum
@@ -132,8 +131,8 @@
           </template>
 
           <template v-if="informacionUsuario.curriculum.certificados.length">
-            <v-card-title>Certificados</v-card-title>
-            <v-card-text>
+            <v-card-title class="py-0">Certificados</v-card-title>
+            <v-card-text class="py-0">
               <v-list two-line subheader>
                 <template
                   v-for="item in informacionUsuario.curriculum.certificados"
@@ -156,8 +155,8 @@
           <template
             v-if="informacionUsuario.curriculum.experienciaLaboral.length"
           >
-            <v-card-title>Experiencia Laboral</v-card-title>
-            <v-card-text>
+            <v-card-title class="py-0">Experiencia Laboral</v-card-title>
+            <v-card-text class="py-0">
               <v-list two-line subheader>
                 <template
                   v-for="item in informacionUsuario.curriculum
@@ -187,8 +186,8 @@
           <template
             v-if="informacionUsuario.curriculum.publicacionesLiterarias.length"
           >
-            <v-card-title> Publicaciones Literarias</v-card-title>
-            <v-card-text>
+            <v-card-title class="py-0"> Publicaciones Literarias</v-card-title>
+            <v-card-text class="py-0">
               <v-list two-line subheader>
                 <template
                   v-for="item in informacionUsuario.curriculum
@@ -219,8 +218,8 @@
           </template>
 
           <template v-if="informacionUsuario.curriculum.idiomas.length">
-            <v-card-title>Idiomas</v-card-title>
-            <v-card-text>
+            <v-card-title class="py-0">Idiomas</v-card-title>
+            <v-card-text class="py-0">
               <v-list two-line subheader>
                 <template v-for="item in informacionUsuario.curriculum.idiomas">
                   <v-list-item :key="item.idDetalleIdioma">
@@ -239,8 +238,8 @@
           </template>
 
           <template v-if="informacionUsuario.curriculum.habilidades.length">
-            <v-card-title>Habilidades</v-card-title>
-            <v-card-text>
+            <v-card-title class="py-0">Habilidades</v-card-title>
+            <v-card-text class="py-0">
               <v-list two-line subheader>
                 <template
                   v-for="item in informacionUsuario.curriculum.habilidades"
@@ -261,8 +260,8 @@
           </template>
 
           <template v-if="informacionUsuario.curriculum.logros.length">
-            <v-card-title>Logros</v-card-title>
-            <v-card-text>
+            <v-card-title class="py-0">Logros</v-card-title>
+            <v-card-text class="py-0">
               <v-list two-line subheader>
                 <template v-for="item in informacionUsuario.curriculum.logros">
                   <v-list-item :key="item.idLogro">
@@ -284,6 +283,7 @@
     </v-layout>
   </v-container>
 </template>
+
 <script>
 export default {
   name: "InformacionContacto",

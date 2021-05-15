@@ -159,6 +159,7 @@
 import AutoCompleteApi from "@/components/AutoCompleteApi.vue";
 export default {
   name: "ListadoEmpleo",
+
   components: {
     AutoCompleteApi,
   },

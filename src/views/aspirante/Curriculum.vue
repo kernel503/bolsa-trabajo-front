@@ -6,7 +6,7 @@
         <v-divider></v-divider>
         <v-form ref="form" v-model="valid" lazy-validation class="mt-2">
           <v-row>
-            <v-col md="6">
+            <v-col md="12">
               <v-avatar
                 class="profile"
                 color="indigo lighten-4"
@@ -129,7 +129,7 @@ export default {
         twitter: "",
         foto: "",
       },
-      valid: true,
+      valid: false,
     };
   },
 
@@ -160,12 +160,13 @@ export default {
               Date.now().toString(28) +
               ".svg",
         };
+        this.$refs.form.resetValidation();
       });
     },
 
     cleanUserForm() {
-      this.$refs.form.resetValidation();
       this.fetchUserInformation();
+      this.$refs.form.resetValidation();
     },
 
     updateUserInformation() {
@@ -176,6 +177,7 @@ export default {
         });
         return;
       }
+
       // eslint-disable-next-line no-undef
       axios.post("/curriculum", this.formData).then((response) => {
         if (response.data.statusCode === 200) {
