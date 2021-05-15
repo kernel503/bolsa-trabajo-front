@@ -1,6 +1,6 @@
 # bolsa-trabajo
 
-[Bolsa de trabajo](https://60a00d1959f588557f2edfaf--dreamy-payne-0b482d.netlify.app/ "Named link title")
+[Bolsa de trabajo](https://60a00d1959f588557f2edfaf--dreamy-payne-0b482d.netlify.app/ "Netlify deployment")
 
 
 __Administradores__
