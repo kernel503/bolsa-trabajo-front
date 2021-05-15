@@ -8,7 +8,7 @@ const axios = require("axios");
 store.commit("VALIDATE_SESSION");
 
 const instance = axios.create({
-  baseURL: "http://localhost:8080/api",
+  baseURL: "https://bolsa-trabajo-spring.herokuapp.com/api",
   timeout: 8000,
   headers: { Accept: "application/json", "Content-Type": "application/json" },
 });
