@@ -20,6 +20,7 @@
               v-model="data.habilidad"
               :rules="[(v) => !!v || 'Campo requerido']"
               label="Conocimientos o Habilidades"
+              @keydown.enter="data.habilidad += '.'"
             ></v-textarea>
           </v-col>
 
@@ -29,6 +30,7 @@
               v-model="data.experiencia"
               :rules="[(v) => !!v || 'Experiencia requerido']"
               label="Experiencia"
+              @keydown.enter="data.experiencia += '.'"
             ></v-textarea>
           </v-col>
 
@@ -38,6 +40,7 @@
               v-model="data.rangoSalarial"
               :rules="[(v) => !!v || 'Salario requerido']"
               label="Salario"
+              @keydown.enter="data.rangoSalarial += '.'"
             ></v-textarea>
           </v-col>
 
@@ -66,6 +69,7 @@
               rows="3"
               v-model="data.informacionAdicional"
               label="Comentario Adicional"
+              @keydown.enter="data.informacionAdicional += '.'"
             ></v-textarea>
           </v-col>
 

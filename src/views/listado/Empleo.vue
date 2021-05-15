@@ -85,38 +85,43 @@
 
               <div class="mt-2">
                 Perfil solicitado
-                <ul v-for="(li, i) in solicitud.habilidad.split('.')" :key="i">
-                  <li v-if="li">{{ li }}.</li>
+                <ul
+                  v-for="(li, i) in solicitud.habilidad.split(/\r?\n/)"
+                  :key="i"
+                >
+                  <li v-if="li">{{ li }}</li>
                 </ul>
               </div>
 
               <div class="mt-2">
                 Experiencia
                 <ul
-                  v-for="(li, i) in solicitud.experiencia.split('.')"
+                  v-for="(li, i) in solicitud.experiencia.split(/\r?\n/)"
                   :key="i"
                 >
-                  <li v-if="li">{{ li }}.</li>
+                  <li v-if="li">{{ li }}</li>
                 </ul>
               </div>
 
               <div class="mt-2">
                 Salario
                 <ul
-                  v-for="(li, i) in solicitud.rangoSalarial.split('.')"
+                  v-for="(li, i) in solicitud.rangoSalarial.split(/\r?\n/)"
                   :key="i"
                 >
-                  <li v-if="li">{{ li }}.</li>
+                  <li v-if="li">{{ li }}</li>
                 </ul>
               </div>
 
               <div class="mt-2" v-if="solicitud.informacionAdicional">
                 Información Adicional
                 <ul
-                  v-for="(li, i) in solicitud.informacionAdicional.split('.')"
+                  v-for="(li, i) in solicitud.informacionAdicional.split(
+                    /\r?\n/
+                  )"
                   :key="i"
                 >
-                  <li v-if="li">{{ li }}.</li>
+                  <li v-if="li">{{ li }}</li>
                 </ul>
               </div>
             </v-card-text>
