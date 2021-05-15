@@ -10,7 +10,7 @@
 - [x] Examinar las ofertas de mano de obra
 - [x] Búsqueda de aspirantes por criterios (No implementada ez) pueden crear PA
 - [x] Contactar a los aspirantes por correo
-- x ] Envio de exámenes (El exámen no es enviado por medio de correo) 1/2
+- [x] Envio de exámenes (El exámen no es enviado por medio de correo) 1/2
 
 
 ### Postulante
