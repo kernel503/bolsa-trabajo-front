@@ -48,6 +48,10 @@
           col="8"
           md="4"
           :key="solicitud.idSolicitudEmpleo"
+          v-if="
+            solicitud.visible ||
+            solicitud.empresa.idEmpresa === $store.state.username
+          "
         >
           <v-card class="mx-auto" max-width="350" min-width="350">
             <template slot="progress">
@@ -119,7 +123,6 @@
             <v-card-actions
               v-if="
                 solicitud.empresa.idEmpresa === $store.state.username &&
-                $store.state.isEmpresa &&
                 $store.state.isLoggedIn
               "
             >
@@ -131,7 +134,7 @@
                   udpdate(solicitud.idSolicitudEmpleo, !solicitud.visible)
                 "
               >
-                Ocultar
+                {{ solicitud.visible ? "Ocultar" : "Habilitar" }}
               </v-btn>
             </v-card-actions>
             <v-card-actions
@@ -188,6 +191,12 @@ export default {
     this.fetchData();
   },
 
+  mounted() {
+    this.empresa = this.$store.state.isEmpresa
+      ? this.$store.state.username
+      : "";
+  },
+
   watch: {
     idTipoPuesto(value) {
       if (value.length) {
@@ -224,18 +233,23 @@ export default {
         .get("/solicitud/empleo/filtro", { params: this.formData })
         .then((result) => {
           this.listado = result?.data?.data || [];
-          this.listado = this.listado.filter((current) => current.visible);
+          //this.listado = this.listado.filter((current) => current.visible);
         });
     },
 
     udpdate(id, status) {
-      // eslint-disable-next-line no-undef
-      axios.put(`/solicitud/empleo/${id}/${status}`).then((result) => {
-        this.$store.commit("SHOW_NOTIFICATION", {
-          text: result.data.message || "Operación realizada.",
+      const confirmUpdate = confirm(
+        "¿Desea modificar la visibilidad del puesto?"
+      );
+      if (confirmUpdate) {
+        // eslint-disable-next-line no-undef
+        axios.put(`/solicitud/empleo/${id}/${status}`).then((result) => {
+          this.$store.commit("SHOW_NOTIFICATION", {
+            text: result.data.message || "Operación realizada.",
+          });
+          this.fetchData();
         });
-        this.fetchData();
-      });
+      }
     },
 
     aplicar(id) {

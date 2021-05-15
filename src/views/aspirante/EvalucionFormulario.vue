@@ -89,8 +89,8 @@ export default {
   computed: {
     texto() {
       return this.listado.length
-        ? "Listado de asignaciones"
-        : "No tiene evaluaciones.";
+        ? "Evaluaciones asignadas 📝"
+        : "No tiene evaluaciones 📝";
     },
   },
   methods: {

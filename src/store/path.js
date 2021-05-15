@@ -69,7 +69,7 @@ const rutaEmpresa = [
     href: { name: "empresaempleo" },
   },
   {
-    title: "Aspirantes al Puesto",
+    title: "Postulantes",
     icon: "mdi-badge-account-alert-outline",
     href: { name: "solicitantespuesto" },
   },

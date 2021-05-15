@@ -2,6 +2,7 @@
   <v-container>
     <v-layout align-center justify-center>
       <v-flex xs12 sm10 md10>
+        <p class="text-h4">Asignación de evaluaciones 📁</p>
         <v-form ref="form" v-model="valid" lazy-validation>
           <v-row>
             <v-col cols="12" sm="6">
@@ -87,6 +88,7 @@ export default {
   created() {
     this.obtenerListado();
   },
+
   computed: {
     filtroEmpresa() {
       return this.listado.filter(
@@ -109,6 +111,7 @@ export default {
         });
         return;
       }
+
       // eslint-disable-next-line no-undef
       axios.post("/asignacion/evaluacion", this.data).then((result) => {
         this.$refs.form.reset();
@@ -118,6 +121,7 @@ export default {
         this.obtenerListado();
       });
     },
+
     eliminar(id) {
       // eslint-disable-next-line no-undef
       axios.delete("/asignacion/evaluacion/" + id).then((result) => {
@@ -127,6 +131,7 @@ export default {
         this.obtenerListado();
       });
     },
+
     obtenerListado() {
       // eslint-disable-next-line no-undef
       axios

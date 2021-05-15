@@ -2,6 +2,14 @@
   <v-container>
     <v-layout align-center justify-center>
       <v-flex xs12 sm10 md10>
+        <p class="text-h4">
+          {{
+            $store.state.isEmpresa
+              ? "Solicitudes de postulantes 🦺"
+              : "Mis solicitudes 🦺"
+          }}
+        </p>
+
         <p class="text-h6 mb-2">
           {{ listado.length ? "Solicitudes al puesto" : "No tiene registro" }}
         </p>

@@ -32,6 +32,7 @@
             <div>
               <v-btn
                 :href="informacionUsuario.curriculum.fb"
+                target="_blank"
                 text
                 color="primary"
               >
@@ -39,6 +40,7 @@
               </v-btn>
               <v-btn
                 :href="informacionUsuario.curriculum.twitter"
+                target="_blank"
                 text
                 color="primary"
               >
@@ -301,7 +303,9 @@ export default {
       // eslint-disable-next-line no-undef
       axios
         .get("/aspirante/" + this.$route.params.username)
-        .then((result) => (this.informacionUsuario = result?.data?.data || {}));
+        .then(
+          (result) => (this.informacionUsuario = result?.data?.data || null)
+        );
     },
 
     sendEmail(email) {

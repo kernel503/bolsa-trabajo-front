@@ -30,7 +30,9 @@
                       persistent-hint
                       hint="Los usuarios son sensibles a mayúsculas."
                       :rules="noSpacesField"
-                    ></v-text-field>
+                    >
+                    </v-text-field>
+
                     <v-text-field
                       v-model.trim="formData.correo"
                       prepend-icon="mdi-email"
@@ -39,7 +41,9 @@
                       type="text"
                       :rules="emailField"
                       validate-on-blur
-                    ></v-text-field>
+                    >
+                    </v-text-field>
+
                     <v-text-field
                       v-model.trim="formData.clave"
                       id="password"
@@ -47,9 +51,12 @@
                       name="password"
                       label="Password"
                       type="password"
-                      hint="Como mínimo 8 caracteres"
-                      :rules="requiredField"
-                    ></v-text-field>
+                      hint="Longitud mínima de 8 caracteres"
+                      :rules="passwordField"
+                      validate-on-blur
+                    >
+                    </v-text-field>
+
                     <v-text-field
                       id="password2"
                       prepend-icon="mdi-lock"
@@ -58,13 +65,16 @@
                       type="password"
                       :rules="sameField"
                       validate-on-blur
-                    ></v-text-field>
+                    >
+                    </v-text-field>
+
                     <v-switch
                       label="Registrar cuenta para empresa"
                       v-model="switchInput"
                       color="blue-grey darken-3"
                       hide-details
-                    ></v-switch>
+                    >
+                    </v-switch>
                   </v-form>
                 </v-card-text>
                 <v-card-actions>
@@ -126,6 +136,13 @@ export default {
       sameField: [
         (v) => v === this.formData.clave || "La contraseña no coincide",
         (v) => !!v || "Campo requerido",
+      ],
+      regexPassword: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
+      passwordField: [
+        (v) =>
+          this.regexPassword.test(v) ||
+          "Debe contener números, mayúsculas y algún  # ? ! @ $ % ^ & * -",
+        (v) => !!v || "El correo es requerido.",
       ],
     };
   },
