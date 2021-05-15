@@ -1,5 +1,28 @@
 # bolsa-trabajo
 
+[Named Link](https://60a00d1959f588557f2edfaf--dreamy-payne-0b482d.netlify.app/ "Named link title")
+
+
+__Administradores__
+
+* aldebaran
+* admin2
+
+__Empresas__
+
+* BigDataSV
+* avicolasv
+* La_Constancia
+* Unilever
+
+__Aspirantes__
+
+* MikeHub073
+* kernel503
+* David98
+* kernel404
+
+
 ## Listado de requerimientos funcionales
 
 - [x] Comparar puestos de trabajo? ESTO no está
