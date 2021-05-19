@@ -52,7 +52,7 @@ $$;
 
 * Tabla `aspirante`
 
-Insertar en la tabla `aspirante` creará una relación en la tabla `curriculum`, agregando por defecto un avatar.
+Insertar en la tabla `aspirante` creará una relación en la tabla `curriculum`, agregando por defecto un avatar, estableciendo el rol y permiso de aspirante en la tabla `usuario` .
 
 ```sql
 create trigger crear_curriculum
