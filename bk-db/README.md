@@ -81,7 +81,7 @@ $$;
 
 * Tabla `pais`
 
-Insertar o actualizar en la tabla `pais` modifica el atributo `bandera_url` con la URL de las banderas si se ingresa una abreviatura válida (ISO 3166-1) y  modificando el campo `informacion` la inicial de cada palabra la pondrá en mayúsucula.
+Insertar o actualizar en la tabla `pais` modifica el atributo `bandera_url` con la URL de las banderas si se ingresa una abreviatura válida (ISO 3166-1), el campo `informacion` la inicial de cada palabra la pondrá en mayúsucula, y el campo `iso` será en minúscula.
 
 ```sql
 create trigger agregar_pais
