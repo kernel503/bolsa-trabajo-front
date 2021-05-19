@@ -22,3 +22,22 @@ FROM usuario u
          JOIN permiso p USING (id_permiso)
 WHERE u.nombre_usuario !~~* 'aldebaran'::text;
 ```
+
+## Rutinas o procedimientos almacenados
+
+* Actualizar permiso usuario
+
+Actualiza el 
+
+```sql
+create procedure actualizar_permiso_usuario(nombre text, id integer)
+    language plpgsql
+as
+$$
+begin
+    update usuario
+    set id_permiso = id
+    where nombre_usuario LIKE nombre;
+end;
+$$;
+```
