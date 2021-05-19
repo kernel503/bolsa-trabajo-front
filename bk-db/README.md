@@ -25,10 +25,6 @@ WHERE u.nombre_usuario !~~* 'aldebaran'::text;
 
 ## Rutinas o procedimientos almacenados
 
-* Actualizar permiso usuario
-
-Actualiza los permisos del usuario
-
 - `actualizar_permiso_usuario(nombre, id)`.
    - `nombre` - parámetro requerido y debe ser de tipo texto, hace referencia a `nombre_usuario` de la tabla `usuario`.
    - `id` - parámetro requerido y debe ser de tipo entero, hace referencia a `id_permiso` de la tabla `permiso`.
