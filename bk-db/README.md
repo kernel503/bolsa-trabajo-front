@@ -3,6 +3,7 @@
 ## Vistas
 
 * Usuarios No Administrativo
+
 Está vista carga a los usuarios con sus roles y permisos excluyendo al usuario 'aldebaraban', que es el administrador del sistema.
 
 ```sql
