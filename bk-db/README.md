@@ -4,7 +4,7 @@
 
 * Usuarios No Administrativo
 
-Está vista carga a los usuarios con sus roles y permisos excluyendo al usuario 'aldebaraban', que es el administrador del sistema.
+Está vista carga a los usuarios con sus roles y permisos excluyendo al usuario **aldebaran**, que es el administrador del sistema.
 
 ```sql
 create view usuarios_no_administrativo
