@@ -115,7 +115,7 @@ create trigger crear_empresa_permisos
     on empresa
     for each row
 execute procedure actualizar_permisos_empresa();
-``
+```
 
 ```sql
 create function actualizar_permisos_empresa() returns trigger
